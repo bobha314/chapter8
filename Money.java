@@ -1,31 +1,43 @@
-
-
 /**
  * Robert Ha
  */
+
 public class Money
 {
-    public Money()
-    {
-        // initialise instance variables
-        x = 0;
-    }
+    public Money() {}
 
-    /**
-     * An example of a method - replace this comment with your own
-     *    that describes the operation of the method
-     *
-     * @pre        preconditions for the method
-     *            (what the method assumes about the method's parameters and class's state)
-     * @post    postconditions for the method
-     *            (what the method guarantees upon completion)
-     * @param    y    description of parameter y
-     * @return    description of the return value
-     */
-    public int sampleMethod(int y)
+    public static int getMoney(double price)
     {
-        // put your code here
-        return x+y;
+        if (price == 0)
+        {
+            return 0;
+        }
+        else if (price >= 100)
+        {
+            //price = price - (int)price/100;
+            System.out.println("100");
+            return getMoney(price - 100);
+        }        
+        else if (price >= 20)
+        {
+            System.out.println("20");
+            return getMoney(price - 20);
+        }
+        else if (price >= 5)
+        {
+            System.out.println("5");
+            return getMoney(price - 5);           
+        }
+        else 
+        {
+            System.out.println("1");
+            return getMoney(price - 1);
+        }
     }
-
+    
+    public static void main (String[] args)
+    {
+        getMoney(220);
+    }
 }
+//price % 100 != 0 && price % 20 != 0 && price % 5 != 0

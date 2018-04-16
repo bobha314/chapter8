@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Money
+comment0.text=\n\ Robert\ Ha\n
+comment1.params=
+comment1.target=Money()
+comment2.params=price
+comment2.target=int\ getMoney(double)
+comment3.params=args
+comment3.target=void\ main(java.lang.String[])
+numComments=4
