@@ -14,9 +14,12 @@ public class Fundraising
     {
         if (goal == 1)
             return goal;
-        else 
-            return Collect(goal/10);
+        else
+        {
+            
+            return Collect(goal/10)+goal;
         }
+    }
     
     public static void main (String[] args)
     {
