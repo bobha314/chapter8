@@ -13,11 +13,8 @@ public class recursiveTriangle18 extends JApplet
    point 3 - Top    C x[2],y[2]
    point 4 draws back to point 1 to complete triangle
    */
-   private int[] xPos = {720, 80, 400, 720};
-   private int[] yPos = {600, 600, 40, 600};
-   
-   private int[] xNew = {(xPos[0]+xPos[1])/2, (xPos[1]+xPos[2])/2, (xPos[2]+xPos[0])/2, (xPos[0]+xPos[1])/2};
-   private int[] yNew = {(yPos[0]+yPos[1])/2, (yPos[1]+yPos[2])/2, (yPos[2]+yPos[0])/2, (yPos[0]+yPos[1])/2}; 
+   private int[] xPosog = {720, 80, 400, 720};
+   private int[] yPosog = {600, 600, 40, 600};
    
    private double distance;
 
@@ -38,17 +35,12 @@ public class recursiveTriangle18 extends JApplet
    {
 
         page.setColor (Color.red);
-        page.drawPolyline (xPos, yPos, xPos.length);
+        page.drawPolyline (xPosog, yPosog, xPosog.length);
 
-        Triangle(xPos,yPos,page);
+        Triangle(xPosog,yPosog,page);
         
     
         //draw the Triangle
-        page.setColor (Color.blue);
-        page.drawPolyline (xNew, yNew, xNew.length);
-        
-        xPos = xNew;
-        yPos = yNew;
    }//end of paint
 
    public void Triangle(int[] xPos, int[] yPos, Graphics page)
@@ -60,12 +52,12 @@ public class recursiveTriangle18 extends JApplet
 
         //if the segment/distance is 30 or so, good length to stop
         
-        if (distance <= 30)
+        if (distance < 30)
         {
             return;
         }
         
-        else //if (distance > 30)
+        else if (distance == Math.sqrt((Math.pow((xPosog[0]-xPosog[1]),2) + Math.pow((yPosog[0]-yPosog[1]),2))))
         {
             int[] xNew = {(xPos[0]+xPos[1])/2, (xPos[1]+xPos[2])/2, (xPos[2]+xPos[0])/2, (xPos[0]+xPos[1])/2};
             int[] yNew = {(yPos[0]+yPos[1])/2, (yPos[1]+yPos[2])/2, (yPos[2]+yPos[0])/2, (yPos[0]+yPos[1])/2}; 
