@@ -44,9 +44,7 @@ public class recursiveTriangle18 extends JApplet
    }//end of paint
 
    public void Triangle(int[] xPos, int[] yPos, Graphics page)
-   {
-       boolean sectri = true;
-       
+   {   
         //Find the distance between 2 points ex. - x,y & x1,y1
         double distance = Math.sqrt((Math.pow((xPos[0]-xPos[1]),2) + Math.pow((yPos[0]-yPos[1]),2)));      
 
