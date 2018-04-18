@@ -15,6 +15,11 @@ public class recursiveTriangle18 extends JApplet
    */
    private int[] xPos = {720, 80, 400, 720};
    private int[] yPos = {600, 600, 40, 600};
+   
+   private int[] xNew = {(xPos[0]+xPos[1])/2, (xPos[1]+xPos[2])/2, (xPos[2]+xPos[0])/2, (xPos[0]+xPos[1])/2};
+   private int[] yNew = {(yPos[0]+yPos[1])/2, (yPos[1]+yPos[2])/2, (yPos[2]+yPos[0])/2, (yPos[0]+yPos[1])/2}; 
+   
+   private double distance;
 
 
    //-----------------------------------------------------------------
@@ -36,15 +41,22 @@ public class recursiveTriangle18 extends JApplet
         page.drawPolyline (xPos, yPos, xPos.length);
 
         Triangle(xPos,yPos,page);
-
+        
+    
+        //draw the Triangle
+        page.setColor (Color.blue);
+        page.drawPolyline (xNew, yNew, xNew.length);
+        
+        xPos = xNew;
+        yPos = yNew;
    }//end of paint
 
    public void Triangle(int[] xPos, int[] yPos, Graphics page)
    {
-        //Find the distance between 2 points ex. - x,y & x1,y1
-        double distance = Math.sqrt(Math.pow((xPos[0]-xPos[0]),2) + Math.pow((yPos[0]-yPos[0]),2));
+       boolean sectri = true;
        
-        
+        //Find the distance between 2 points ex. - x,y & x1,y1
+        double distance = Math.sqrt((Math.pow((xPos[0]-xPos[1]),2) + Math.pow((yPos[0]-yPos[1]),2)));      
 
         //if the segment/distance is 30 or so, good length to stop
         
@@ -53,12 +65,7 @@ public class recursiveTriangle18 extends JApplet
             return;
         }
         
-        //{
-            //find the mid points of each line segment
-
-
-            //make the x and y array (3 points + first point to finish triangle)
-        else
+        else //if (distance > 30)
         {
             int[] xNew = {(xPos[0]+xPos[1])/2, (xPos[1]+xPos[2])/2, (xPos[2]+xPos[0])/2, (xPos[0]+xPos[1])/2};
             int[] yNew = {(yPos[0]+yPos[1])/2, (yPos[1]+yPos[2])/2, (yPos[2]+yPos[0])/2, (yPos[0]+yPos[1])/2}; 
@@ -67,25 +74,26 @@ public class recursiveTriangle18 extends JApplet
             page.setColor (Color.blue);
             page.drawPolyline (xNew, yNew, xNew.length);
 
-            //create x,y Array using the midpoints you calculated
-            /*
-            int xArray[] = new xArray[4];
-            int yArray[] = new yArray[4];
             
-            for(int i = 0; i < xNew.length; i++)
-            {
-                xArray[i] = xNew[i]
-                */
-
-
             // Recursive calls for each section of triangle
             Triangle(xNew, yNew, page);
         }
-
-
-        //}
-
-
-
-   }//end of Triangle
+        /*
+        else 
+        {
+            int[] xtri1 = {xNew[0], xNew[0]-xNew[2], (xNew[0]+xNew[0]-xNew[2])/2};
+            int[] ytri1 = {yNew[0], yNew[0]-yNew[2], (yNew[0]+yNew[0]-yNew[2])/2};
+            
+            page.setColor(Color.black);
+            page.drawPolyline(xtri1, ytri1, xtri1.length);
+        }
+        */
+   }//end of Triangle  
 }
+
+
+
+
+
+
+
