@@ -68,6 +68,16 @@ public class recursiveTriangle18 extends JApplet
             // Recursive calls for each section of triangle
             Triangle(xNew, yNew, page);
         }
+        
+        else 
+        {
+            int[] midx = {(xPos[0]+xPos[1])/2, (xPos[0]+xPos[1])/2-(int)distance/2, (xPos[0]+xPos[1])/2-(int)distance/4, (xPos[0]+xPos[1])/2};
+            int[] midy = {(yPos[0]+yPos[1])/2, (yPos[0]+yPos[1])/2, (yPos[0]+yPos[1])/2+(int)distance/2, (yPos[0]+yPos[1])/2};
+            
+            page.setColor (Color.green);
+            page.drawPolyline (midx, midy, midx.length);
+            Triangle(midx, midy, page);
+        }
         /*
         else 
         {
