@@ -52,7 +52,7 @@ public class recursiveTriangle18 extends JApplet
 
         //if the segment/distance is 30 or so, good length to stop
         
-        if (distance < 40)
+        if (distance < 30)
         {
             return;
         }
@@ -79,12 +79,6 @@ public class recursiveTriangle18 extends JApplet
             Triangle(xNew1, yNew1, page);
             Triangle(xNew2, yNew2, page);
             Triangle(xNew3, yNew3, page);
-            
-      
-
-            
-            // Recursive calls for each section of triangle
-            
         }   
    }//end of Triangle  
 }
