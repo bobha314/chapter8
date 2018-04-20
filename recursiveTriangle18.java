@@ -47,47 +47,45 @@ public class recursiveTriangle18 extends JApplet
    {   
         //Find the distance between 2 points ex. - x,y & x1,y1
         double distance = Math.sqrt((Math.pow((xPos[0]-xPos[1]),2) + Math.pow((yPos[0]-yPos[1]),2)));      
+        
+        
 
         //if the segment/distance is 30 or so, good length to stop
         
-        if (distance < 30)
+        if (distance < 40)
         {
             return;
         }
         
-        else if (distance == Math.sqrt((Math.pow((xPosog[0]-xPosog[1]),2) + Math.pow((yPosog[0]-yPosog[1]),2))))
+        else 
         {
-            int[] xNew = {(xPos[0]+xPos[1])/2, (xPos[1]+xPos[2])/2, (xPos[2]+xPos[0])/2, (xPos[0]+xPos[1])/2};
-            int[] yNew = {(yPos[0]+yPos[1])/2, (yPos[1]+yPos[2])/2, (yPos[2]+yPos[0])/2, (yPos[0]+yPos[1])/2}; 
+            int[] xMid = {(xPos[0]+xPos[1])/2, (xPos[1]+xPos[2])/2, (xPos[2]+xPos[0])/2, (xPos[0]+xPos[1])/2};
+            int[] yMid = {(yPos[0]+yPos[1])/2, (yPos[1]+yPos[2])/2, (yPos[2]+yPos[0])/2, (yPos[0]+yPos[1])/2};
+            
+            page.drawPolyline (xMid, yMid, xMid.length);
+            
+            int[] xNew1 = {xPos[0], xMid[0], xMid[2], xPos[0]};
+            int[] yNew1 = {yPos[0], yMid[0], yMid[2], yPos[0]}; 
+           
+            int[] xNew2 = {xPos[1], xMid[1], xMid[0], xPos[1]};
+            int[] yNew2 = {yPos[1], yMid[1], yMid[0], yPos[1]};  
+            
+            int[] xNew3 = {xPos[2], xMid[2], xMid[1], xPos[2]};
+            int[] yNew3 = {yPos[2], yMid[2], yMid[1], yPos[2]}; 
 
             //draw the Triangle
             page.setColor (Color.blue);
-            page.drawPolyline (xNew, yNew, xNew.length);
+            
+            Triangle(xNew1, yNew1, page);
+            Triangle(xNew2, yNew2, page);
+            Triangle(xNew3, yNew3, page);
+            
+      
 
             
             // Recursive calls for each section of triangle
-            Triangle(xNew, yNew, page);
-        }
-        
-        else 
-        {
-            int[] midx = {(xPos[0]+xPos[1])/2, (xPos[0]+xPos[1])/2-(int)distance/2, (xPos[0]+xPos[1])/2-(int)distance/4, (xPos[0]+xPos[1])/2};
-            int[] midy = {(yPos[0]+yPos[1])/2, (yPos[0]+yPos[1])/2, (yPos[0]+yPos[1])/2+(int)distance/2, (yPos[0]+yPos[1])/2};
             
-            page.setColor (Color.green);
-            page.drawPolyline (midx, midy, midx.length);
-            Triangle(midx, midy, page);
-        }
-        /*
-        else 
-        {
-            int[] xtri1 = {xNew[0], xNew[0]-xNew[2], (xNew[0]+xNew[0]-xNew[2])/2};
-            int[] ytri1 = {yNew[0], yNew[0]-yNew[2], (yNew[0]+yNew[0]-yNew[2])/2};
-            
-            page.setColor(Color.black);
-            page.drawPolyline(xtri1, ytri1, xtri1.length);
-        }
-        */
+        }   
    }//end of Triangle  
 }
 
