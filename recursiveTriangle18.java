@@ -13,9 +13,11 @@ public class recursiveTriangle18 extends JApplet
    point 3 - Top    C x[2],y[2]
    point 4 draws back to point 1 to complete triangle
    */
+   //orignal coordinates of triangle
    private int[] xPosog = {720, 80, 400, 720};
    private int[] yPosog = {600, 600, 40, 600};
    
+   //length of side of triangle
    private double distance;
 
 
@@ -33,7 +35,6 @@ public class recursiveTriangle18 extends JApplet
    //-----------------------------------------------------------------
    public void paint (Graphics page)
    {
-
         page.setColor (Color.red);
         page.drawPolyline (xPosog, yPosog, xPosog.length);
 
@@ -48,22 +49,22 @@ public class recursiveTriangle18 extends JApplet
         //Find the distance between 2 points ex. - x,y & x1,y1
         double distance = Math.sqrt((Math.pow((xPos[0]-xPos[1]),2) + Math.pow((yPos[0]-yPos[1]),2)));      
         
-        
-
         //if the segment/distance is 30 or so, good length to stop
         
-        if (distance < 30)
+        if (distance < 10)
         {
             return;
         }
         
         else 
         {
+            //coordinates of midpoints of triangle
             int[] xMid = {(xPos[0]+xPos[1])/2, (xPos[1]+xPos[2])/2, (xPos[2]+xPos[0])/2, (xPos[0]+xPos[1])/2};
             int[] yMid = {(yPos[0]+yPos[1])/2, (yPos[1]+yPos[2])/2, (yPos[2]+yPos[0])/2, (yPos[0]+yPos[1])/2};
             
             page.drawPolyline (xMid, yMid, xMid.length);
             
+            //takes smaller triangles and makes them new triangles
             int[] xNew1 = {xPos[0], xMid[0], xMid[2], xPos[0]};
             int[] yNew1 = {yPos[0], yMid[0], yMid[2], yPos[0]}; 
            
@@ -76,6 +77,7 @@ public class recursiveTriangle18 extends JApplet
             //draw the Triangle
             page.setColor (Color.blue);
             
+            //recursively calls triangles
             Triangle(xNew1, yNew1, page);
             Triangle(xNew2, yNew2, page);
             Triangle(xNew3, yNew3, page);
