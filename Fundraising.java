@@ -12,12 +12,14 @@ public class Fundraising
     
     public static int Collect(int goal)
     {
+        System.out.println(goal);
         if (goal == 1)
-            return goal;
+            return 1;
         else
         {
             
-            return Collect(goal/10)+goal;
+            return Collect(goal/10)+Collect(goal/10)+Collect(goal/10)+Collect(goal/10)+Collect(goal/10)+
+            Collect(goal/10)+Collect(goal/10)+Collect(goal/10)+Collect(goal/10)+Collect(goal/10)+1;
         }
     }
     

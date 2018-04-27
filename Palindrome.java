@@ -24,7 +24,7 @@ public class Palindrome
         }
         else if (palin.charAt(0) == palin.charAt(palin.length()-1))
         {
-            return Check(palin.substring(1, palin.length()-2));
+            return Check(palin.substring(1, palin.length()-1));
         }
         else
         {
@@ -34,6 +34,7 @@ public class Palindrome
         
     public static void main (String[] args)
     {
-        System.out.println(Check("fat"));
+        System.out.println(Check("wasitaratisaw"));
+        System.out.println(Check("totot"));
     }
 }
